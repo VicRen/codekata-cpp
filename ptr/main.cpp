@@ -59,6 +59,9 @@ int main() {
     sharedSw2->setStr("Hello, C++11");
     sharedSw2->print();
 
+    cout << "p1 < p2 = " << boolalpha << (sharedSw < sharedSw2) << endl;
+    cout << "p1 == p2 = " << boolalpha << (sharedSw == sharedSw2) << endl;
+
     sharedSw.reset();
     sharedSw2.reset();
 
