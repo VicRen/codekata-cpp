@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void LeetCode::UpdateVersion(const string &version) {
+void LeetCode::SetVersion(const string &version) {
     version_ = version;
 }
 

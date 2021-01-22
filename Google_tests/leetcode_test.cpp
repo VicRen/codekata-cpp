@@ -17,7 +17,7 @@ protected:
 TEST_F(LeetCodeFixture, TEST_VERSION) {
     string version = "2.0";
     leetCode->PrintVersion();
-    leetCode->UpdateVersion(version);
+    leetCode->SetVersion(version);
     leetCode->PrintVersion();
 
     EXPECT_EQ(leetCode->GetVersion(), version);

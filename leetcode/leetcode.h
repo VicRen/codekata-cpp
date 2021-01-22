@@ -10,7 +10,7 @@ public:
     explicit LeetCode(string version) : version_(std::move(version)) {}
     ~LeetCode() = default;
 
-    void UpdateVersion(const string &version);
+    void SetVersion(const string &version);
     string GetVersion();
     void PrintVersion();
 private:
