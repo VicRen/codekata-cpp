@@ -1,0 +1,24 @@
+#include "gtest/gtest.h"
+#include "leetcode.h"
+
+class LeetCodeFixture : public ::testing::Test {
+protected:
+    void SetUp() override {
+        leetCode = new LeetCode("1.0");
+    }
+
+    void TearDown() override {
+        delete leetCode;
+    }
+
+    LeetCode *leetCode;
+};
+
+TEST_F(LeetCodeFixture, TEST_VERSION) {
+    string version = "2.0";
+    leetCode->PrintVersion();
+    leetCode->UpdateVersion(version);
+    leetCode->PrintVersion();
+
+    EXPECT_EQ(leetCode->GetVersion(), version);
+}

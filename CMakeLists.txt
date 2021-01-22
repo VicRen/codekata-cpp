@@ -3,8 +3,12 @@ project(codekata_cpp)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(codekata_cpp main.cpp)
-add_executable(ptr ptr/main.cpp  ptr/string_wrapper.cpp ptr/string_wrapper.h)
-add_executable(weak_ptr weak_ptr/main.cpp)
-add_executable(lambda lambda/main.cpp)
-add_executable(parameter parameter/main.cpp)
+set(SOURCE_FILES main.cpp)
+add_executable(codekata_cpp ${SOURCE_FILES})
+
+include_directories(leetcode)
+add_subdirectory(leetcode)
+
+target_link_libraries(codekata_cpp LeetCode_lib)
+
+add_subdirectory(Google_tests)
