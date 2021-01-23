@@ -14,3 +14,7 @@ string LeetCode::GetVersion() {
 void LeetCode::PrintVersion() {
     cout << "Leet Code Version: " << version_ << endl;
 }
+
+int TryFunction(int x) {
+    return x;
+}

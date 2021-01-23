@@ -22,3 +22,6 @@ TEST_F(LeetCodeFixture, TEST_VERSION) {
 
     EXPECT_EQ(leetCode->GetVersion(), version);
 }
+
+TEST_F(LeetCodeFixture, TEST_FUNCTION) {
+}
