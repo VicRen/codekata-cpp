@@ -13,6 +13,8 @@ public:
     void SetVersion(const string &version);
     string GetVersion();
     void PrintVersion();
+
+    string replace(const string &str, char c, char r);
 private:
     string version_{};
 };

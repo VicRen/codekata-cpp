@@ -22,3 +22,8 @@ TEST_F(LeetCodeFixture, TEST_VERSION) {
 
     EXPECT_EQ(leetCode->GetVersion(), version);
 }
+
+TEST_F(LeetCodeFixture, TEST_REPLACE) {
+    auto ret = leetCode->replace("testing", 't', 'r');
+    EXPECT_EQ(ret, "resring");
+}
