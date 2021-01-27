@@ -27,3 +27,8 @@ TEST_F(LeetCodeFixture, TEST_REPLACE) {
     auto ret = leetCode->replace("testing", 't', 'r');
     EXPECT_EQ(ret, "resring");
 }
+
+TEST(TESTING, TEST_REVERSE) {
+    auto ret = LeetCode::reverse("testing");
+    EXPECT_EQ(ret , "gnitset");
+}

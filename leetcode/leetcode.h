@@ -15,6 +15,7 @@ public:
     void PrintVersion();
 
     string replace(const string &str, char c, char r);
+    static string reverse(const string &str);
 private:
     string version_{};
 };

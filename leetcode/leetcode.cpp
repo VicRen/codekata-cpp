@@ -30,3 +30,11 @@ string LeetCode::replace(const string &str, const char c, char r) {
     });
     return ss.str();
 }
+
+string LeetCode::reverse(const string &str) {
+    stringstream ss;
+    for_each(str.rbegin(), str.rend(), [str, &ss](char i) {
+        ss << i;
+    });
+    return ss.str();
+}
