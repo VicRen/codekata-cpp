@@ -38,3 +38,13 @@ string LeetCode::reverse(const string &str) {
     });
     return ss.str();
 }
+
+int LeetCode::multiplesOf35(const int limit) {
+    int ret = 0;
+    for (int i = 3; i < limit; i++) {
+        if ((i % 3 == 0) && (i % 5 == 0)) {
+            ret += i;
+        }
+    }
+    return ret;
+}

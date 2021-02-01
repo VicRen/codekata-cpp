@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "leetcode.h"
+#include <iostream>
 
 class LeetCodeFixture : public ::testing::Test {
 protected:
@@ -31,4 +32,11 @@ TEST_F(LeetCodeFixture, TEST_REPLACE) {
 TEST(TESTING, TEST_REVERSE) {
     auto ret = LeetCode::reverse("testing");
     EXPECT_EQ(ret , "gnitset");
+}
+
+TEST(MULTIPLES, TEST_MULTIPLES_OF_3_5) {
+    auto ret = LeetCode::multiplesOf35(16);
+    EXPECT_EQ(ret, 15);
+
+    std::cout << "multiples of 3 and 5: " << LeetCode::multiplesOf35(1000) << std::endl;
 }
