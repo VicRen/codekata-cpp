@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include <vector>
 #include "leetcode.h"
 
 using namespace std;
@@ -47,4 +48,19 @@ int LeetCode::multiplesOf35(const int limit) {
         }
     }
     return ret;
+}
+
+int LeetCode::largestPrimeFactor(int n) {
+    int max = 0;
+    int divider = 2;
+    while (n > 1) {
+        while (n % divider == 0) {
+            n = n / divider;
+            if (divider > max) {
+                max = divider;
+            }
+        }
+        divider++;
+    }
+    return max;
 }

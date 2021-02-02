@@ -40,3 +40,8 @@ TEST(MULTIPLES, TEST_MULTIPLES_OF_3_5) {
 
     std::cout << "multiples of 3 and 5: " << LeetCode::multiplesOf35(1000) << std::endl;
 }
+
+TEST(EULER_PORJECT, LARGEST_PRIME_FACTOR) {
+    auto ret = LeetCode::largestPrimeFactor(10);
+    EXPECT_EQ(ret, 5);
+}
