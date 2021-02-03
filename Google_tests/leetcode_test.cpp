@@ -45,3 +45,13 @@ TEST(EULER_PORJECT, LARGEST_PRIME_FACTOR) {
     auto ret = LeetCode::largestPrimeFactor(10);
     EXPECT_EQ(ret, 5);
 }
+
+class PrimeFactorFixture : public ::testing::Test {
+
+};
+
+TEST_F(PrimeFactorFixture, PRIME_FACOTR_OF_1) {
+    auto *expect = new vector<int>{};
+    auto ret = LeetCode::findPrimeFactors(1);
+    EXPECT_EQ(expect, ret);
+}

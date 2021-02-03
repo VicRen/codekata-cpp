@@ -64,3 +64,8 @@ int LeetCode::largestPrimeFactor(int n) {
     }
     return max;
 }
+
+vector<int> *LeetCode::findPrimeFactors(int n) {
+    auto *ret = new vector<int>;
+    return ret;
+}

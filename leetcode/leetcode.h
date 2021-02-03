@@ -18,6 +18,7 @@ public:
     static string reverse(const string &str);
     static int multiplesOf35(int limit);
     static int largestPrimeFactor(int n);
+    static vector<int> *findPrimeFactors(int n);
 private:
     string version_{};
 };
