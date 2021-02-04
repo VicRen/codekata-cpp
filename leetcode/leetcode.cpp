@@ -67,5 +67,8 @@ int LeetCode::largestPrimeFactor(int n) {
 
 vector<int> *LeetCode::findPrimeFactors(int n) {
     auto *ret = new vector<int>;
+    while (n % 2 == 0) {
+        n = n / 2;
+    }
     return ret;
 }
