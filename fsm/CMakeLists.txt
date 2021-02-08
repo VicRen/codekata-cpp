@@ -2,6 +2,7 @@ project(FSM_lib)
 
 set(HEADER_FILES
         fsmtype.h
+        state.h
         )
 
 set(SOURCE_FILES
