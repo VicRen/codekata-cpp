@@ -54,6 +54,37 @@ struct cd_player {
                 fsm.set(waiting);
             }
         };
+        fsm.on(opening, insert) = [&](const fsm::args &args) {
+            has_cd = true;
+            fsm.set(opening);
+        };
+        fsm.on(opening, eject) = [&](const fsm::args &args) {
+            has_cd = false;
+            fsm.set(opening);
+        };
+        fsm.on(closing, open) = [&](const fsm::args &args) {
+            open_tray();
+            fsm.set(opening);
+        };
+        fsm.on(waiting, play) = [&](const fsm::args &args) {
+            if (!good_disk_format()) {
+                fsm.set(waiting);
+            } else {
+                start_playback(args[0]);
+                fsm.set(playing);
+            }
+        };
+        fsm.on(waiting, open) = [&](const fsm::args &args) {
+            open_tray();
+            fsm.set(opening);
+        };
+        fsm.on(playing, open) = [&](const fsm::args &args) {
+            open_tray();
+            fsm.set(opening);
+        };
+        fsm.on(playing, stop) = [&](const fsm::args &args) {
+            fsm.set(waiting);
+        };
 
         fsm.set(opening);
     }
@@ -66,6 +97,9 @@ int main() {
     leetCode->PrintVersion();
 
     cd_player cd;
+    cd.fsm.command(insert);
     cd.fsm.command(close);
+//    cd.fsm.command(open);
+    cd.fsm.command(play, 1);
     return 0;
 }
