@@ -99,7 +99,6 @@ int main() {
     cd_player cd;
     cd.fsm.command(insert);
     cd.fsm.command(close);
-//    cd.fsm.command(open);
     cd.fsm.command(play, 1);
     return 0;
 }
