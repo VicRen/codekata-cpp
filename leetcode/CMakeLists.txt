@@ -2,6 +2,7 @@ project(LeetCode_lib)
 
 set(HEADER_FILES
         leetcode.h
+        fsm.h
         )
 
 set(SOURCE_FILES
