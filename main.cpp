@@ -6,25 +6,36 @@
 using namespace std;
 
 enum {
-    on,
-    off,
+    init,
+    joining,
+    joined,
+    leaving,
+    left,
 };
 
-struct light {
-    bool isOn_;
+struct venus {
+    bool isJoined_;
 
     fsm::stack fsm;
 
-    light() : isOn_(false) {
-        fsm.on(on, off) = [&](const fsm::args &args) {
-            std::cout << "lights off" << std::endl;
-            fsm.set(off);
+    venus() : isJoined_(false) {
+        fsm.on(init, joining) = [&](const fsm::args &args) {
+            std::cout << "venus init" << std::endl;
+            fsm.set(joining);
         };
-        fsm.on(off, on) = [&](const fsm::args &args) {
-            std::cout << "lights on" << std::endl;
-            fsm.set(on);
+        fsm.on(joining, joined) = [&](const fsm::args &args) {
+            std::cout << "venus joined" << std::endl;
+            fsm.set(joined);
         };
-        fsm.set(off);
+        fsm.on(joined, leaving) = [&](const fsm::args &args) {
+            std::cout << "venus leaving" << std::endl;
+            fsm.set(leaving);
+        };
+        fsm.on(leaving, init) = [&](const fsm::args &args) {
+            std::cout << "venus left" << std::endl;
+            fsm.set(init);
+        };
+        fsm.set(joining);
     }
 };
 
@@ -33,8 +44,11 @@ int main() {
     auto leetCode = new LeetCode("1.0");
 
     leetCode->PrintVersion();
-    light l;
-    l.fsm.command(on);
-    l.fsm.command(off);
+    venus l;
+    l.fsm.command(init);
+    l.fsm.command(joining);
+    l.fsm.command(joined);
+    l.fsm.command(leaving);
+    l.fsm.command(init);
     return 0;
 }
