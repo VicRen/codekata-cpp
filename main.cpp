@@ -10,7 +10,6 @@ enum {
     joining,
     joined,
     leaving,
-    left,
 };
 
 struct venus {
