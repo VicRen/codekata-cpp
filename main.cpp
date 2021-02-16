@@ -2,6 +2,7 @@
 #include <string>
 #include "leetcode.h"
 #include "fsm.h"
+#include "doubly_linked_list.h"
 
 using namespace std;
 
@@ -16,6 +17,10 @@ struct venus {
     bool isJoined_;
 
     fsm::stack fsm;
+
+    bool isJoined() {
+        return fsm.is_state(joined);
+    }
 
     venus() : isJoined_(false) {
         fsm.on(init, joining) = [&](const fsm::args &args) {
@@ -38,15 +43,26 @@ struct venus {
     }
 };
 
+void TestingDoublyLinkedList() {
+    Node *head = new Node(1);
+
+    insert(&head, 2);
+
+    std::cout << "head data: " << head->value << std::endl;
+}
+
 int main() {
     cout << "Code Kat for C++" << endl;
     auto leetCode = new LeetCode("1.0");
 
     leetCode->PrintVersion();
+
+    TestingDoublyLinkedList();
     venus l;
     l.fsm.command(init);
     l.fsm.command(joining);
     l.fsm.command(joined);
+    std::cout << "is joined: " << l.isJoined() << std::endl;
     l.fsm.command(leaving);
     l.fsm.command(init);
     return 0;
