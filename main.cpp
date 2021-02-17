@@ -47,8 +47,10 @@ void TestingDoublyLinkedList() {
     Node *head = new Node(1);
 
     insert(&head, 2);
+    insert(&head, 3);
 
     std::cout << "head data: " << head->value << std::endl;
+    std::cout << "next data: " << head->pnx->value << std::endl;
 }
 
 int main() {
