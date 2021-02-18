@@ -1,8 +1,11 @@
 #include <iostream>
 #include <string>
+
 #include "leetcode.h"
 #include "fsm.h"
 #include "doubly_linked_list.h"
+#include "factory.h"
+#include "product.h"
 
 using namespace std;
 
@@ -53,6 +56,11 @@ void TestingDoublyLinkedList() {
     std::cout << "next data: " << head->pnx->value << std::endl;
 }
 
+void TestingFactory() {
+    Factory *fac = new ConcreteFactory();
+    Product *p = fac->CreateProduct();
+}
+
 int main() {
     cout << "Code Kat for C++" << endl;
     auto leetCode = new LeetCode("1.0");
@@ -60,6 +68,8 @@ int main() {
     leetCode->PrintVersion();
 
     TestingDoublyLinkedList();
+    TestingFactory();
+
     venus l;
     l.fsm.command(init);
     l.fsm.command(joining);
