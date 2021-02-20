@@ -6,6 +6,9 @@
 #include "doubly_linked_list.h"
 #include "factory.h"
 #include "product.h"
+#include "bridge/color.h"
+#include "bridge/shape.h"
+#include "bridge/square.h"
 
 using namespace std;
 
@@ -61,6 +64,13 @@ void TestingFactory() {
     Product *p = fac->CreateProduct();
 }
 
+void TestingBridge() {
+    auto name = std::string("White");
+    auto color = new Color(name);
+    Shape *shape = new Square(color);
+    shape->Draw();
+}
+
 int main() {
     cout << "Code Kat for C++" << endl;
     auto leetCode = new LeetCode("1.0");
@@ -69,6 +79,7 @@ int main() {
 
     TestingDoublyLinkedList();
     TestingFactory();
+    TestingBridge();
 
     venus l;
     l.fsm.command(init);

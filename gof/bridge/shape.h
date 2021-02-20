@@ -2,15 +2,23 @@
 #define CODEKATA_CPP_SHAPE_H
 
 #include <memory>
-
-class Color;
+#include "color.h"
 
 class Shape {
 public:
-    explicit Shape(Color *color) : color_(color) {}
-    virtual ~Shape();
+    explicit Shape() {}
+    virtual ~Shape() {}
 
-    virtual void Draw();
+    virtual void Draw() = 0;
+
+protected:
+};
+
+class ColoredShape : public Shape {
+public:
+    explicit ColoredShape(Color *color) {
+        color_ = std::unique_ptr<Color>(color);
+    }
 
 protected:
     std::unique_ptr<Color> color_;
