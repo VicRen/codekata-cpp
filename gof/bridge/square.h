@@ -9,6 +9,7 @@ public:
     explicit Square(Color *color) : ColoredShape(color) {
     }
     void Draw() override;
+    void Print() override;
 };
 
 

@@ -10,6 +10,7 @@ public:
     virtual ~Shape() {}
 
     virtual void Draw() = 0;
+    virtual void Print() = 0;
 
 protected:
 };

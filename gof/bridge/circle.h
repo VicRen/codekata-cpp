@@ -3,10 +3,11 @@
 
 #include "shape.h"
 
-class Circle : public Shape {
+class Circle : public ColoredShape {
 public:
     Circle();
     void Draw() override;
+    void Print() override;
 };
 
 

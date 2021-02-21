@@ -69,6 +69,7 @@ void TestingBridge() {
     auto color = new Color(name);
     Shape *shape = new Square(color);
     shape->Draw();
+    shape->Print();
 }
 
 int main() {
