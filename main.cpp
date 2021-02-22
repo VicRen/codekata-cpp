@@ -9,6 +9,7 @@
 #include "bridge/color.h"
 #include "bridge/shape.h"
 #include "bridge/square.h"
+#include "adapter/adapter.h"
 
 using namespace std;
 
@@ -72,6 +73,12 @@ void TestingBridge() {
     shape->Print();
 }
 
+void TestingAdapter() {
+    auto *adaptee = new Adaptee;
+    Target *target = new Adapter(adaptee);
+    target->Request();
+}
+
 int main() {
     cout << "Code Kat for C++" << endl;
     auto leetCode = new LeetCode("1.0");
@@ -81,6 +88,7 @@ int main() {
     TestingDoublyLinkedList();
     TestingFactory();
     TestingBridge();
+    TestingAdapter();
 
     venus l;
     l.fsm.command(init);
