@@ -10,6 +10,8 @@
 #include "bridge/shape.h"
 #include "bridge/square.h"
 #include "adapter/adapter.h"
+#include "composite/leaf.h"
+#include "composite/composite.h"
 
 using namespace std;
 
@@ -79,6 +81,17 @@ void TestingAdapter() {
     target->Request();
 }
 
+void TestingComposite() {
+    Leaf *l = new Leaf;
+    l->Operation();
+
+    auto *c = new Composite;
+    c->Add(l);
+    c->Operation();
+    Component *com = c->GetChild(0);
+    com->Operation();
+}
+
 int main() {
     cout << "Code Kat for C++" << endl;
     auto leetCode = new LeetCode("1.0");
@@ -89,6 +102,7 @@ int main() {
     TestingFactory();
     TestingBridge();
     TestingAdapter();
+    TestingComposite();
 
     venus l;
     l.fsm.command(init);

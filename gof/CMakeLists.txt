@@ -7,7 +7,11 @@ set(HEADER_FILES
         bridge/circle.h
         bridge/square.h
         bridge/color.h
-        adapter/adapter.h)
+        adapter/adapter.h
+        composite/component.h
+        composite/composite.h
+        composite/leaf.h
+        )
 
 set(SOURCE_FILES
         product.cpp
@@ -16,6 +20,10 @@ set(SOURCE_FILES
         bridge/circle.cpp
         bridge/square.cpp
         bridge/color.cpp
-        adapter/adapter.cpp)
+        adapter/adapter.cpp
+        composite/component.cpp
+        composite/composite.cpp
+        composite/leaf.cpp
+        )
 
 add_library(GoF_lib STATIC ${SOURCE_FILES} ${HEADER_FILES})
