@@ -12,6 +12,7 @@
 #include "adapter/adapter.h"
 #include "composite/leaf.h"
 #include "composite/composite.h"
+#include "flyweight/flyweight.h"
 
 using namespace std;
 
@@ -92,6 +93,13 @@ void TestingComposite() {
     com->Operation();
 }
 
+void TestingFlyweight() {
+    auto fc = new FlyweightFactory();
+    auto fw1 = fc->GetFlyweight("hello");
+    auto fw2 = fc->GetFlyweight("world");
+    auto fw3 = fc->GetFlyweight("hello");
+}
+
 int main() {
     cout << "Code Kat for C++" << endl;
     auto leetCode = new LeetCode("1.0");
@@ -103,6 +111,7 @@ int main() {
     TestingBridge();
     TestingAdapter();
     TestingComposite();
+    TestingFlyweight();
 
     venus l;
     l.fsm.command(init);

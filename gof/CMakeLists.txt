@@ -11,6 +11,7 @@ set(HEADER_FILES
         composite/component.h
         composite/composite.h
         composite/leaf.h
+        flyweight/flyweight.cpp
         )
 
 set(SOURCE_FILES
@@ -24,6 +25,7 @@ set(SOURCE_FILES
         composite/component.cpp
         composite/composite.cpp
         composite/leaf.cpp
+        flyweight/flyweight.cpp
         )
 
 add_library(GoF_lib STATIC ${SOURCE_FILES} ${HEADER_FILES})
