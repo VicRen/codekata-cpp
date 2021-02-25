@@ -13,6 +13,7 @@
 #include "composite/leaf.h"
 #include "composite/composite.h"
 #include "flyweight/flyweight.h"
+#include "facade/facade.h"
 
 #include <random>
 #include <type_traits>
@@ -117,6 +118,11 @@ void TestingFlyweight() {
     auto fw3 = fc->GetFlyweight("hello");
 }
 
+void TestingFacade() {
+    auto f = new Facade;
+    f->OperationWrapper();
+}
+
 int main() {
     cout << "Code Kat for C++" << endl;
     auto leetCode = new LeetCode("1.0");
@@ -129,6 +135,7 @@ int main() {
     TestingAdapter();
     TestingComposite();
     TestingFlyweight();
+    TestingFacade();
 
     venus l;
     l.fsm.command(init);
