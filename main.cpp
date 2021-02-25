@@ -14,6 +14,23 @@
 #include "composite/composite.h"
 #include "flyweight/flyweight.h"
 
+#include <random>
+#include <type_traits>
+
+class IDGenerator {
+public:
+    explicit IDGenerator(unsigned int seed = 0) : seed_(seed) {
+    }
+    ~IDGenerator() = default;
+    int64_t GenerateID() {
+        default_random_engine defEngine(seed_);
+        uniform_real_distribution<double> dblDistro(0U, RAND_MAX);
+        return dblDistro(defEngine);
+    }
+private:
+    unsigned int seed_;
+};
+
 using namespace std;
 
 enum {
@@ -120,5 +137,8 @@ int main() {
     std::cout << "is joined: " << l.isJoined() << std::endl;
     l.fsm.command(leaving);
     l.fsm.command(init);
+
+    auto ig = new IDGenerator(time(nullptr));
+    std::cout << "---->id: " << ig->GenerateID() << std::endl;
     return 0;
 }
