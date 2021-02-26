@@ -23,10 +23,18 @@ public:
     explicit IDGenerator(unsigned int seed = 0) : seed_(seed) {
     }
     ~IDGenerator() = default;
-    int64_t GenerateID() {
-        default_random_engine defEngine(seed_);
-        uniform_real_distribution<double> dblDistro(0U, RAND_MAX);
+    unsigned int GenerateID() {
+        std::default_random_engine defEngine(seed_);
+        std::uniform_real_distribution<unsigned int> dblDistro(0U, RAND_MAX);
         return dblDistro(defEngine);
+    }
+
+    static std::string ToString(unsigned int id) {
+        return std::to_string(id);
+    }
+
+    static unsigned int ToInt(std::string id) {
+        return std::stoul(id);
     }
 private:
     unsigned int seed_;
@@ -146,6 +154,14 @@ int main() {
     l.fsm.command(init);
 
     auto ig = new IDGenerator(time(nullptr));
-    std::cout << "---->id: " << ig->GenerateID() << std::endl;
+    auto id = ig->GenerateID();
+    std::cout << "---->id: " << id << std::endl;
+    std::string idStr = IDGenerator::ToString(id);
+    std::cout << "---->id to string: " << idStr << std::endl;
+    unsigned int ti;
+    ti = IDGenerator::ToInt(idStr);
+    std::cout << "---->id to int: " << ti << std::endl;
+
+
     return 0;
 }
