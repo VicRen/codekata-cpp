@@ -161,7 +161,5 @@ int main() {
     unsigned int ti;
     ti = IDGenerator::ToInt(idStr);
     std::cout << "---->id to int: " << ti << std::endl;
-
-
     return 0;
 }
