@@ -14,6 +14,7 @@
 #include "composite/composite.h"
 #include "flyweight/flyweight.h"
 #include "facade/facade.h"
+#include "proxy/proxy.h"
 
 #include <random>
 #include <type_traits>
@@ -131,6 +132,12 @@ void TestingFacade() {
     f->OperationWrapper();
 }
 
+void TestingProxy() {
+    Subject *sub = new ConcreteSubject;
+    auto p = new Proxy(sub);
+    p->Request();
+}
+
 int main() {
     cout << "Code Kat for C++" << endl;
     auto leetCode = new LeetCode("1.0");
@@ -144,6 +151,7 @@ int main() {
     TestingComposite();
     TestingFlyweight();
     TestingFacade();
+    TestingProxy();
 
     venus l;
     l.fsm.command(init);

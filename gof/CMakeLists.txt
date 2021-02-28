@@ -13,6 +13,7 @@ set(HEADER_FILES
         composite/leaf.h
         flyweight/flyweight.cpp
         facade/facade.h
+        proxy/proxy.h
         )
 
 set(SOURCE_FILES
@@ -28,6 +29,7 @@ set(SOURCE_FILES
         composite/leaf.cpp
         flyweight/flyweight.cpp
         facade/facade.cpp
+        proxy/proxy.cpp
         )
 
 add_library(GoF_lib STATIC ${SOURCE_FILES} ${HEADER_FILES})
