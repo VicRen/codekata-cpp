@@ -15,6 +15,7 @@
 #include "flyweight/flyweight.h"
 #include "facade/facade.h"
 #include "proxy/proxy.h"
+#include "template/template.h"
 
 #include <random>
 #include <type_traits>
@@ -138,6 +139,13 @@ void TestingProxy() {
     p->Request();
 }
 
+void TestingTemplate() {
+    AbstractClass *p1 = new ConcreteClass1();
+    AbstractClass *p2 = new ConcreteClass2;
+    p1->TemplateMethod();
+    p2->TemplateMethod();
+}
+
 int main() {
     cout << "Code Kat for C++" << endl;
     auto leetCode = new LeetCode("1.0");
@@ -152,6 +160,7 @@ int main() {
     TestingFlyweight();
     TestingFacade();
     TestingProxy();
+    TestingTemplate();
 
     venus l;
     l.fsm.command(init);

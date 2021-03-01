@@ -14,6 +14,7 @@ set(HEADER_FILES
         flyweight/flyweight.cpp
         facade/facade.h
         proxy/proxy.h
+        template/template.h
         )
 
 set(SOURCE_FILES
@@ -30,6 +31,7 @@ set(SOURCE_FILES
         flyweight/flyweight.cpp
         facade/facade.cpp
         proxy/proxy.cpp
+        template/template.cpp
         )
 
 add_library(GoF_lib STATIC ${SOURCE_FILES} ${HEADER_FILES})
