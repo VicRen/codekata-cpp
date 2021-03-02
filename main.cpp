@@ -16,6 +16,7 @@
 #include "facade/facade.h"
 #include "proxy/proxy.h"
 #include "template/template.h"
+#include "strategy/strategy.h"
 
 #include <random>
 #include <type_traits>
@@ -146,6 +147,13 @@ void TestingTemplate() {
     p2->TemplateMethod();
 }
 
+void TestingStrategy() {
+    Strategy *ps = new ConcreteStrategyA;
+    auto *pc = new Context(ps);
+    pc->DoAction();
+    delete pc;
+}
+
 int main() {
     cout << "Code Kat for C++" << endl;
     auto leetCode = new LeetCode("1.0");
@@ -161,6 +169,7 @@ int main() {
     TestingFacade();
     TestingProxy();
     TestingTemplate();
+    TestingStrategy();
 
     venus l;
     l.fsm.command(init);
