@@ -16,6 +16,7 @@ set(HEADER_FILES
         proxy/proxy.h
         template/template.h
         strategy/strategy.h
+        state/state.h
         )
 
 set(SOURCE_FILES
@@ -34,6 +35,7 @@ set(SOURCE_FILES
         proxy/proxy.cpp
         template/template.cpp
         strategy/strategy.cpp
+        state/state.cpp
         )
 
 add_library(GoF_lib STATIC ${SOURCE_FILES} ${HEADER_FILES})

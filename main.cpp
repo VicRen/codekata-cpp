@@ -17,6 +17,7 @@
 #include "proxy/proxy.h"
 #include "template/template.h"
 #include "strategy/strategy.h"
+#include "state/state.h"
 
 #include <random>
 #include <type_traits>
@@ -154,6 +155,17 @@ void TestingStrategy() {
     delete pc;
 }
 
+void TestingStat() {
+    State *state = new ConcreteStateA;
+    Ctx *context = new Ctx(state);
+    context->OperationInterface();
+    context->OperationInterface();
+    context->OperationInterface();
+    context->OperationChangeState();
+    context->OperationChangeState();
+    context->OperationChangeState();
+}
+
 int main() {
     cout << "Code Kat for C++" << endl;
     auto leetCode = new LeetCode("1.0");
@@ -170,6 +182,7 @@ int main() {
     TestingProxy();
     TestingTemplate();
     TestingStrategy();
+    TestingStat();
 
     venus l;
     l.fsm.command(init);
