@@ -18,6 +18,7 @@ set(HEADER_FILES
         strategy/strategy.h
         state/state.h
         observer/observer.h
+        memento/memento.h
         )
 
 set(SOURCE_FILES
@@ -38,6 +39,7 @@ set(SOURCE_FILES
         strategy/strategy.cpp
         state/state.cpp
         observer/observer.cpp
+        memento/memento.cpp
         )
 
 add_library(GoF_lib STATIC ${SOURCE_FILES} ${HEADER_FILES})

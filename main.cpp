@@ -19,6 +19,7 @@
 #include "strategy/strategy.h"
 #include "state/state.h"
 #include "observer/observer.h"
+#include "memento/memento.h"
 
 #include <random>
 #include <type_traits>
@@ -179,6 +180,17 @@ void TestingObserver() {
     sub->Notify();
 }
 
+void TestingMemento() {
+    auto o = new Originator;
+    o->SetState("old");
+    o->PrintState();
+    Memento *m = o->CreateMemento();
+    o->SetState("new");
+    o->PrintState();
+    o->RestoreToMemento(m);
+    o->PrintState();
+}
+
 int main() {
     cout << "Code Kat for C++" << endl;
     auto leetCode = new LeetCode("1.0");
@@ -197,6 +209,7 @@ int main() {
     TestingStrategy();
     TestingStat();
     TestingObserver();
+    TestingMemento();
 
     venus l;
     l.fsm.command(init);
