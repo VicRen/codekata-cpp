@@ -1,6 +1,7 @@
 #include "proxy.h"
 
 #include <iostream>
+#include <state/state.h>
 
 ConcreteSubject::ConcreteSubject() {
 }

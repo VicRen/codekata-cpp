@@ -17,6 +17,7 @@ set(HEADER_FILES
         template/template.h
         strategy/strategy.h
         state/state.h
+        observer/observer.h
         )
 
 set(SOURCE_FILES
@@ -36,6 +37,7 @@ set(SOURCE_FILES
         template/template.cpp
         strategy/strategy.cpp
         state/state.cpp
+        observer/observer.cpp
         )
 
 add_library(GoF_lib STATIC ${SOURCE_FILES} ${HEADER_FILES})

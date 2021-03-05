@@ -18,6 +18,7 @@
 #include "template/template.h"
 #include "strategy/strategy.h"
 #include "state/state.h"
+#include "observer/observer.h"
 
 #include <random>
 #include <type_traits>
@@ -166,6 +167,18 @@ void TestingStat() {
     context->OperationChangeState();
 }
 
+void TestingObserver() {
+    auto sub = new ConcreteObserverSubject;
+    auto o1 = new ConcreteObserverA(sub);
+    auto o2 = new ConcreteObserverB(sub);
+    sub->Attach(o1);
+    sub->SetState("old");
+    sub->Notify();
+    sub->Attach(o2);
+    sub->SetState("new");
+    sub->Notify();
+}
+
 int main() {
     cout << "Code Kat for C++" << endl;
     auto leetCode = new LeetCode("1.0");
@@ -183,6 +196,7 @@ int main() {
     TestingTemplate();
     TestingStrategy();
     TestingStat();
+    TestingObserver();
 
     venus l;
     l.fsm.command(init);
