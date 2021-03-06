@@ -20,6 +20,7 @@
 #include "state/state.h"
 #include "observer/observer.h"
 #include "memento/memento.h"
+#include "mediator/mediator.h"
 
 #include <random>
 #include <type_traits>
@@ -191,6 +192,27 @@ void TestingMemento() {
     o->PrintState();
 }
 
+void TestingMediator() {
+    auto m = new ConcreteMediator;
+    auto c1 = new ConcreteColleagueA(m);
+    auto c2 = new ConcreteColleagueB(m);
+    m->IntroColleague(c1, c2);
+    c1->SetState("old");
+    c2->SetState("old");
+    c1->Action();
+    c2->Action();
+    std::cout << std::endl;
+
+    c1->SetState("new");
+    c1->Action();
+    c2->Action();
+    std::cout << std::endl;
+
+    c2->SetState("old");
+    c2->Action();
+    c1->Action();
+}
+
 int main() {
     cout << "Code Kat for C++" << endl;
     auto leetCode = new LeetCode("1.0");
@@ -210,6 +232,7 @@ int main() {
     TestingStat();
     TestingObserver();
     TestingMemento();
+    TestingMediator();
 
     venus l;
     l.fsm.command(init);
