@@ -20,6 +20,7 @@ set(HEADER_FILES
         observer/observer.h
         memento/memento.h
         mediator/mediator.h
+        command/command.h
         )
 
 set(SOURCE_FILES
@@ -42,6 +43,7 @@ set(SOURCE_FILES
         observer/observer.cpp
         memento/memento.cpp
         mediator/mediator.cpp
+        command/command.cpp
         )
 
 add_library(GoF_lib STATIC ${SOURCE_FILES} ${HEADER_FILES})

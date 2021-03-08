@@ -21,6 +21,7 @@
 #include "observer/observer.h"
 #include "memento/memento.h"
 #include "mediator/mediator.h"
+#include "command/command.h"
 
 #include <random>
 #include <type_traits>
@@ -213,6 +214,13 @@ void TestingMediator() {
     c1->Action();
 }
 
+void TestingCommand() {
+    auto rev = new Receiver;
+    auto cmd = new ConcreteCommand(rev);
+    auto inv = new Invoker(cmd);
+    inv->Invoke();
+}
+
 int main() {
     cout << "Code Kat for C++" << endl;
     auto leetCode = new LeetCode("1.0");
@@ -233,6 +241,7 @@ int main() {
     TestingObserver();
     TestingMemento();
     TestingMediator();
+    TestingCommand();
 
     venus l;
     l.fsm.command(init);
