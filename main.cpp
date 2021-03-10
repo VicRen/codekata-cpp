@@ -23,6 +23,7 @@
 #include "mediator/mediator.h"
 #include "command/command.h"
 #include "visitor/visitor.h"
+#include "chain/handle.h"
 
 #include <random>
 #include <type_traits>
@@ -228,6 +229,14 @@ void TestingVisitor() {
     element->Accept(visitor);
 }
 
+void TestingChainOfResponsibility() {
+    Handle *h1 = new ConcreteHandleA;
+    Handle *h2 = new ConcreteHandleB;
+
+    h1->SetSuccessor(h2);
+    h1->HandleRequest();
+}
+
 int main() {
     cout << "Code Kat for C++" << endl;
     auto leetCode = new LeetCode("1.0");
@@ -250,6 +259,7 @@ int main() {
     TestingMediator();
     TestingCommand();
     TestingVisitor();
+    TestingChainOfResponsibility();
 
     venus l;
     l.fsm.command(init);
