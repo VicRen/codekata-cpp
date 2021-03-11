@@ -24,6 +24,7 @@
 #include "command/command.h"
 #include "visitor/visitor.h"
 #include "chain/handle.h"
+#include "iterator/aggregate.h"
 
 #include <random>
 #include <type_traits>
@@ -237,6 +238,15 @@ void TestingChainOfResponsibility() {
     h1->HandleRequest();
 }
 
+void TestingIterator() {
+    Aggregate *ag = new ConcreteAggregate;
+    Iterator *it = new ConcreteIterator(ag);
+
+    for (; !(it->IsDone()); it->Next()) {
+        std::cout << "iterator: " << it->CurrentItem() << std::endl;
+    }
+}
+
 int main() {
     cout << "Code Kat for C++" << endl;
     auto leetCode = new LeetCode("1.0");
@@ -260,6 +270,7 @@ int main() {
     TestingCommand();
     TestingVisitor();
     TestingChainOfResponsibility();
+    TestingIterator();
 
     venus l;
     l.fsm.command(init);

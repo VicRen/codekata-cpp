@@ -23,6 +23,7 @@ set(HEADER_FILES
         command/command.h
         visitor/visitor.h
         chain/handle.h
+        iterator/aggregate.h
         )
 
 set(SOURCE_FILES
@@ -48,6 +49,7 @@ set(SOURCE_FILES
         command/command.cpp
         visitor/visitor.cpp
         chain/handle.cpp
+        iterator/aggregate.cpp
         )
 
 add_library(GoF_lib STATIC ${SOURCE_FILES} ${HEADER_FILES})
