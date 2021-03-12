@@ -25,6 +25,7 @@
 #include "visitor/visitor.h"
 #include "chain/handle.h"
 #include "iterator/aggregate.h"
+#include "interpreter/interpret.h"
 
 #include <random>
 #include <type_traits>
@@ -247,6 +248,13 @@ void TestingIterator() {
     }
 }
 
+void TestingInterpreter() {
+    auto c = new InterpreterContext;
+    AbstractExpression *e = new TerminalExpression("hello");
+    AbstractExpression *nte = new NonterminalExpression(e, 2);
+    nte->Interpret(*c);
+}
+
 int main() {
     cout << "Code Kat for C++" << endl;
     auto leetCode = new LeetCode("1.0");
@@ -271,6 +279,7 @@ int main() {
     TestingVisitor();
     TestingChainOfResponsibility();
     TestingIterator();
+    TestingInterpreter();
 
     venus l;
     l.fsm.command(init);
