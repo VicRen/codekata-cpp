@@ -2,7 +2,7 @@ project(GoF_lib)
 
 set(HEADER_FILES
         product.h
-        factory.h
+        factory/factory.h
         bridge/shape.h
         bridge/circle.h
         bridge/square.h
@@ -29,7 +29,7 @@ set(HEADER_FILES
 
 set(SOURCE_FILES
         product.cpp
-        factory.cpp
+        factory/factory.cpp
         bridge/shape.cpp
         bridge/circle.cpp
         bridge/square.cpp

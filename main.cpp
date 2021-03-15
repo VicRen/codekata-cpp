@@ -4,7 +4,7 @@
 #include "leetcode.h"
 #include "fsm.h"
 #include "doubly_linked_list.h"
-#include "factory.h"
+#include "factory/factory.h"
 #include "product.h"
 #include "bridge/color.h"
 #include "bridge/shape.h"
