@@ -5,7 +5,7 @@
 #include "fsm.h"
 #include "doubly_linked_list.h"
 #include "factory/factory.h"
-#include "product.h"
+#include "factory/product.h"
 #include "bridge/color.h"
 #include "bridge/shape.h"
 #include "bridge/square.h"
