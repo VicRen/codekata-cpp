@@ -47,11 +47,22 @@ TEST(EULER_PORJECT, LARGEST_PRIME_FACTOR) {
 }
 
 class PrimeFactorFixture : public ::testing::Test {
-
 };
 
 TEST_F(PrimeFactorFixture, PRIME_FACOTR_OF_1) {
-    auto *expect = new vector<int>{};
+    auto expect = new vector<int>{};
     auto ret = LeetCode::findPrimeFactors(1);
-    EXPECT_EQ(expect, ret);
+    ASSERT_EQ(expect->size(), ret->size()) << "Vectors x and y are of unequal length";
+    for (int i = 0; i < expect->size(); ++i) {
+        EXPECT_EQ(expect[i], ret[i]) << "Vectors x and y differ at index " << i;
+    }
+}
+
+TEST_F(PrimeFactorFixture, PRIME_FACOTR_OF_2) {
+    auto expect = new vector<int>{2};
+    auto ret = LeetCode::findPrimeFactors(2);
+    ASSERT_EQ(expect->size(), ret->size()) << "Vectors x and y are of unequal length";
+    for (int i = 0; i < expect->size(); ++i) {
+        EXPECT_EQ(expect[i], ret[i]) << "Vectors x and y differ at index " << i;
+    }
 }
