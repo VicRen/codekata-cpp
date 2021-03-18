@@ -31,7 +31,7 @@ TEST_F(LeetCodeFixture, TEST_REPLACE) {
 
 TEST(TESTING, TEST_REVERSE) {
     auto ret = LeetCode::reverse("testing");
-    EXPECT_EQ(ret , "gnitset");
+    EXPECT_EQ(ret, "gnitset");
 }
 
 TEST(MULTIPLES, TEST_MULTIPLES_OF_3_5) {
@@ -64,5 +64,23 @@ TEST_F(PrimeFactorFixture, PRIME_FACOTR_OF_2) {
     ASSERT_EQ(expect->size(), ret->size()) << "Vectors x and y are of unequal length";
     for (int i = 0; i < expect->size(); ++i) {
         EXPECT_EQ(expect[i], ret[i]) << "Vectors x and y differ at index " << i;
+    }
+}
+
+TEST_F(PrimeFactorFixture, PRIME_FACOTR_OF_3) {
+    auto expect = new vector<int>{3};
+    auto ret = LeetCode::findPrimeFactors(3);
+    ASSERT_EQ(expect->size(), ret->size()) << "Vectors x and y are of unequal length";
+    for (int i = 0; i < expect->size(); ++i) {
+        EXPECT_EQ(expect[i], ret[i]) << "Vectors x and y differ at index " << i;
+    }
+}
+
+TEST_F(PrimeFactorFixture, PRIME_FACOTR_OF_4) {
+    auto expect = new vector<int>{2, 2};
+    auto ret = LeetCode::findPrimeFactors(4);
+    ASSERT_EQ(expect->size(), ret->size()) << "Vectors x and y are of unequal length";
+    for (int i = 0; i < expect->size(); ++i) {
+        EXPECT_EQ(expect->at(i), ret->at(i)) << "Vectors x and y differ at index " << i;
     }
 }
