@@ -84,3 +84,22 @@ TEST_F(PrimeFactorFixture, PRIME_FACOTR_OF_4) {
         EXPECT_EQ(expect->at(i), ret->at(i)) << "Vectors x and y differ at index " << i;
     }
 }
+
+TEST_F(PrimeFactorFixture, PRIME_FACOTR_OF_5) {
+    auto expect = new vector<int>{5};
+    auto ret = LeetCode::findPrimeFactors(5);
+    ASSERT_EQ(expect->size(), ret->size()) << "Vectors x and y are of unequal length";
+    for (int i = 0; i < expect->size(); ++i) {
+        EXPECT_EQ(expect->at(i), ret->at(i)) << "Vectors x and y differ at index " << i;
+    }
+}
+
+TEST_F(PrimeFactorFixture, PRIME_FACOTR_OF_9) {
+    auto expect = new vector<int>{3, 3};
+    auto ret = LeetCode::findPrimeFactors(9);
+    ASSERT_EQ(expect->size(), ret->size()) << "Vectors x and y are of unequal length";
+    for (int i = 0; i < expect->size(); ++i) {
+        EXPECT_EQ(expect->at(i), ret->at(i)) << "Vectors x and y differ at index " << i;
+    }
+}
+
