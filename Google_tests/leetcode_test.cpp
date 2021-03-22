@@ -112,3 +112,12 @@ TEST_F(PrimeFactorFixture, PRIME_FACOTR_OF_A_LARGE_NUMBER) {
     }
 }
 
+TEST_F(PrimeFactorFixture, PRIME_FACOTR_OF_A_LARGE_NUMBER_2) {
+    auto expect = new vector<int>{2, 2, 3, 3, 5, 11, 17, 23, 37, 73};
+    auto ret = LeetCode::findPrimeFactors(2 * 2 * 3 * 3 * 5 * 11 * 17 * 23 * 37 * 73);
+    ASSERT_EQ(expect->size(), ret->size()) << "Vectors x and y are of unequal length";
+    for (int i = 0; i < expect->size(); ++i) {
+        EXPECT_EQ(expect->at(i), ret->at(i)) << "Vectors x and y differ at index " << i;
+    }
+}
+
