@@ -19,6 +19,7 @@ public:
     static int multiplesOf35(int limit);
     static int largestPrimeFactor(int n);
     static vector<int> *findPrimeFactors(int n);
+    static vector<long> *findPrimeFactors(long n);
 private:
     string version_{};
 };

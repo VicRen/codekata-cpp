@@ -80,3 +80,19 @@ vector<int> *LeetCode::findPrimeFactors(int n) {
     }
     return ret;
 }
+
+vector<long> *LeetCode::findPrimeFactors(long n) {
+    auto ret = new vector<long>;
+    auto divider = 2;
+    while (divider < n) {
+        while (n % divider == 0) {
+            n = n / divider;
+            ret->push_back(divider);
+        }
+        divider++;
+    }
+    if (n > 1) {
+        ret->push_back(n);
+    }
+    return ret;
+}
