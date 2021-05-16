@@ -27,6 +27,8 @@
 #include "iterator/aggregate.h"
 #include "interpreter/interpret.h"
 
+#include "elegant_callback/test_interface_impl.h"
+
 #include <random>
 #include <type_traits>
 
@@ -255,6 +257,11 @@ void TestingInterpreter() {
     nte->Interpret(*c);
 }
 
+void TestingCallback() {
+    auto t = new TestInterfaceImpl;
+    t->doTest();
+}
+
 int main() {
     cout << "Code Kat for C++" << endl;
     auto leetCode = new LeetCode("1.0");
@@ -280,6 +287,7 @@ int main() {
     TestingChainOfResponsibility();
     TestingIterator();
     TestingInterpreter();
+    TestingCallback();
 
     venus l;
     l.fsm.command(init);
