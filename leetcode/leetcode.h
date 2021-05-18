@@ -5,21 +5,32 @@
 #include <utility>
 
 using namespace std;
+
 class LeetCode {
 public:
     explicit LeetCode(string version) : version_(std::move(version)) {}
+
     ~LeetCode() = default;
 
     void SetVersion(const string &version);
+
     string GetVersion();
+
     void PrintVersion();
 
     string replace(const string &str, char c, char r);
+
     static string reverse(const string &str);
+
     static int multiplesOf35(int limit);
+
     static int largestPrimeFactor(int n);
+
     static vector<int> *findPrimeFactors(int n);
+
     static vector<long> *findPrimeFactors(long n);
+
+    static void testFsm();
 private:
     string version_{};
 };

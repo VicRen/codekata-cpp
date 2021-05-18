@@ -26,6 +26,7 @@
 #include "chain/handle.h"
 #include "iterator/aggregate.h"
 #include "interpreter/interpret.h"
+#include "leetcode/fsm_testing.h"
 
 #include "elegant_callback/test_interface_impl.h"
 
@@ -262,6 +263,16 @@ void TestingCallback() {
     t->doTest();
 }
 
+void TestingFsm() {
+    ant_t ant;
+    for (int i = 0; i < 12000; ++i) {
+        if (0 == rand() % 10000) {
+            ant.fsm.push(defending);
+        }
+        ant.fsm.command(tick);
+    }
+}
+
 int main() {
     cout << "Code Kat for C++" << endl;
     auto leetCode = new LeetCode("1.0");
@@ -288,6 +299,7 @@ int main() {
     TestingIterator();
     TestingInterpreter();
     TestingCallback();
+    TestingFsm();
 
     venus l;
     l.fsm.command(init);

@@ -2,6 +2,7 @@
 #include <sstream>
 #include <vector>
 #include "leetcode.h"
+#include "fsm_testing.h"
 
 using namespace std;
 
@@ -95,4 +96,8 @@ vector<long> *LeetCode::findPrimeFactors(long n) {
         ret->push_back(n);
     }
     return ret;
+}
+
+void LeetCode::testFsm() {
+
 }
