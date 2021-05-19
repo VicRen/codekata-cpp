@@ -29,8 +29,7 @@ struct ant_t {
             std::cout << "back from another task. remaining distance: " << distance << std::endl;
         };
         fsm.on(walking, tick) = [&](const fsm::args &args) {
-            std::cout << "\r" << "\\|/-"[distance % 4] << "walking" << (flow > 0 ? "-->" : "<--")
-                      << " ";
+            std::cout << "\r" << "\\|/-"[ distance % 4 ] << " walking " << (flow > 0 ? "-->" : "<--") << " ";
             distance += flow;
             if (1000 == distance) {
                 std::cout << "at food!" << std::endl;
@@ -47,7 +46,7 @@ struct ant_t {
                       << std::endl;
         };
         fsm.on(defending, tick) = [&](const fsm::args &args) {
-            std::cout << "\r" << "\\|/-$"[health % 4] << " health: (" << health << ") ";
+            std::cout << "\r" << "\\|/-$"[ health % 4 ] << " health: (" << health << ")   ";
             --health;
             if (health < 0) {
                 std::cout << std::endl;
