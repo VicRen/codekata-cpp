@@ -15,4 +15,33 @@ add_subdirectory(elegant_callback)
 
 target_link_libraries(codekata_cpp LeetCode_lib GoF_lib elegant_callback_lib)
 
-add_subdirectory(Google_tests)
+# -------------- unit tests -------------
+
+set(
+        UT_SOURCE_FILES
+        leetcode/leetcode_test.cpp
+)
+
+enable_testing()
+# add google tests
+include(FetchContent)
+FetchContent_Declare(
+        gtest
+        URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
+)
+if (WIN32)
+    # For Windows: Prevent overriding the parent project's compiler/linker settings
+    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+endif ()
+FetchContent_MakeAvailable(gtest)
+
+include_directories(leetcode_test PRIVATE src)
+add_executable(leetcode_test ${UT_SOURCE_FILES})
+target_link_libraries(
+        leetcode_test
+        gtest_main
+        gmock_main
+        LeetCode_lib
+)
+include(GoogleTest)
+gtest_discover_tests(leetcode_test)
