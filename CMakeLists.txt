@@ -19,7 +19,7 @@ target_link_libraries(codekata_cpp LeetCode_lib GoF_lib elegant_callback_lib)
 
 set(
         UT_SOURCE_FILES
-        leetcode/leetcode_test.cpp
+        tests/leetcode_test.cpp
 )
 
 enable_testing()
