@@ -66,15 +66,13 @@ enum {
 };
 
 struct venus {
-    bool isJoined_;
-
     fsm::stack fsm;
 
-    bool isJoined() {
+    bool isJoined() const {
         return fsm.is_state(joined);
     }
 
-    venus() : isJoined_(false) {
+    venus() {
         fsm.on(init, joining) = [&](const fsm::args &args) {
             std::cout << "venus init" << std::endl;
             fsm.set(joining);
@@ -91,7 +89,7 @@ struct venus {
             std::cout << "venus left" << std::endl;
             fsm.set(init);
         };
-        fsm.set(joining);
+        fsm.set(init);
     }
 };
 
