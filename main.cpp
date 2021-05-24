@@ -86,7 +86,7 @@ struct venus {
             fsm.set(leaving);
         };
         fsm.on(leaving, init) = [&](const fsm::args &args) {
-            std::cout << "venus left" << std::endl;
+            std::cout << "venus left, return to init state" << std::endl;
             fsm.set(init);
         };
         fsm.set(init);
