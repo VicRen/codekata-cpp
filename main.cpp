@@ -38,7 +38,9 @@ class IDGenerator {
 public:
     explicit IDGenerator(unsigned int seed = 0) : seed_(seed) {
     }
+
     ~IDGenerator() = default;
+
     unsigned int GenerateID() {
         std::default_random_engine defEngine(seed_);
         std::uniform_real_distribution<unsigned int> dblDistro(0U, RAND_MAX);
@@ -52,6 +54,7 @@ public:
     static unsigned int ToInt(std::string id) {
         return std::stoul(id);
     }
+
 private:
     unsigned int seed_;
 };

@@ -14,7 +14,7 @@ Node *XOR(Node *node1, Node *node2) {
 }
 
 void insert(Node **headRef, int data) {
-    Node* newHead = new Node(data);
+    Node *newHead = new Node(data);
 
     newHead->pnx = XOR(nullptr, *headRef);
 
