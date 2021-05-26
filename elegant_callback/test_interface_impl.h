@@ -9,7 +9,7 @@ public:
 
     ~TestInterfaceImpl() = default;
 
-    void doTest() override;
+    void doTest(std::shared_ptr<Event> event) override;
 };
 
 #endif //CODEKATA_CPP_TEST_INTERFACE_H

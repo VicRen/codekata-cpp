@@ -2,6 +2,7 @@
 
 #include <iostream>
 
-void TestInterfaceImpl::doTest() {
-    std::cout << "Test Interface doing test" << std::endl;
+void TestInterfaceImpl::doTest(std::shared_ptr<Event> event) {
+    auto cb = event->callback;
+    (*cb)();
 }
