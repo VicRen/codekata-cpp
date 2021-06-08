@@ -12,6 +12,8 @@ include_directories(gof)
 add_subdirectory(gof)
 include_directories(elegant_callback)
 add_subdirectory(elegant_callback)
+include_directories(tree)
+add_subdirectory(tree)
 
 target_link_libraries(codekata_cpp LeetCode_lib GoF_lib elegant_callback_lib)
 
