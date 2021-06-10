@@ -52,8 +52,27 @@ void preOrder(Node *root) {
     }
 }
 
+void inOrder(Node *root) {
+    std::stack<Node*> stack;
+    auto tmp = root;
+    while (tmp != nullptr || !stack.empty()) {
+        if (tmp != nullptr) {
+            stack.push(tmp);
+            tmp = tmp->Left;
+        } else {
+            tmp = stack.top();
+            tmp->Print();
+            stack.pop();
+            tmp = tmp->Right;
+        }
+    }
+}
+
 int main() {
     auto root = createTree();
+    std::cout << "----------pre order--------" << std::endl;
     preOrder(root);
+    std::cout << "----------in order--------" << std::endl;
+    inOrder(root);
     return 0;
 }
