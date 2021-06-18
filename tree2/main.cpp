@@ -2,6 +2,7 @@
 #include <iostream>
 #include <utility>
 #include <stack>
+#include <thread>
 
 class Node {
 public:
@@ -88,15 +89,40 @@ void postOrder(Node *root) {
     }
 }
 
+class DeC {
+public:
+    ~DeC() {
+        std::cout << "~DeC" << std::endl;
+    }
+};
+
+class Outer {
+public:
+    explicit Outer(DeC *dec) : dec_(dec) {
+    }
+
+    void destroy() {
+        delete dec_;
+        dec_ = nullptr;
+    }
+
+private:
+    DeC *dec_;
+};
+
 int main() {
-    auto root = createTree();
-    std::cout << "----------pre order--------" << std::endl;
-    preOrder(root);
-    std::cout << "----------in order--------" << std::endl;
-    root = createTree();
-    inOrder(root);
-    std::cout << "----------post order--------" << std::endl;
-    root = createTree();
-    postOrder(root);
+//    auto root = createTree();
+//    std::cout << "----------pre order--------" << std::endl;
+//    preOrder(root);
+//    std::cout << "----------in order--------" << std::endl;
+//    root = createTree();
+//    inOrder(root);
+//    std::cout << "----------post order--------" << std::endl;
+//    root = createTree();
+//    postOrder(root);
+    auto t = std::make_unique<Outer>(new DeC);
+    t->destroy();
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(5000));
     return 0;
 }
