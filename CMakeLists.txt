@@ -1,28 +1,18 @@
 cmake_minimum_required(VERSION 3.17)
-project(codekata_cpp)
+project(codekata-cpp)
 
 set(CMAKE_CXX_STANDARD 17)
 
 set(SOURCE_FILES main.cpp)
-add_executable(codekata_cpp ${SOURCE_FILES})
-
-include_directories(leetcode)
-add_subdirectory(leetcode)
-include_directories(gof)
-add_subdirectory(gof)
-include_directories(elegant_callback)
-add_subdirectory(elegant_callback)
-include_directories(tree)
-add_subdirectory(tree)
-add_subdirectory(tree2)
-
-target_link_libraries(codekata_cpp LeetCode_lib GoF_lib elegant_callback_lib)
+add_executable(
+        ${PROJECT_NAME}
+        ${SOURCE_FILES}
+)
 
 # -------------- unit tests -------------
-
 set(
         UT_SOURCE_FILES
-        tests/leetcode_test.cpp
+        main_test.cpp
 )
 
 enable_testing()
@@ -38,13 +28,20 @@ if (WIN32)
 endif ()
 FetchContent_MakeAvailable(gtest)
 
-include_directories(leetcode_test PRIVATE src)
-add_executable(leetcode_test ${UT_SOURCE_FILES})
+set(TEST_PROJECT_NAME unit-test-cpp)
+
+include_directories(
+        ${TEST_PROJECT_NAME} PRIVATE
+        src
+)
+add_executable(
+        ${TEST_PROJECT_NAME}
+        ${UT_SOURCE_FILES}
+)
 target_link_libraries(
-        leetcode_test
+        ${TEST_PROJECT_NAME}
         gtest_main
         gmock_main
-        LeetCode_lib
 )
 include(GoogleTest)
-gtest_discover_tests(leetcode_test)
+gtest_discover_tests(${TEST_PROJECT_NAME})
