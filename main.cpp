@@ -1,5 +1,5 @@
 #include "thread/thread_pool.h"
-#include "thread/hileia_thread.h"
+#include "thread/hi_thread.h"
 #include <vector>
 #include <iostream>
 #include <chrono>
@@ -84,7 +84,7 @@ int main() {
   Callback callback;
   auto callback2 = new Callback;
   std::cout << "thread:" << std::this_thread::get_id() << std::endl;
-  HiLeiaThread thread;
+  HiThread thread;
   thread.Post([&callback, callback2]{
     std::cout << "thread:" << std::this_thread::get_id() << std::endl;
     std::cout << "--------------" << std::endl;

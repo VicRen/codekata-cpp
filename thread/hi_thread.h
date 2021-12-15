@@ -1,5 +1,5 @@
-#ifndef CODEKATA_CPP_HILEIA_THREAD_H
-#define CODEKATA_CPP_HILEIA_THREAD_H
+#ifndef CODEKATA_CPP_HI_THREAD_H
+#define CODEKATA_CPP_HI_THREAD_H
 
 #include <vector>
 #include <queue>
@@ -11,11 +11,11 @@
 #include <functional>
 #include <stdexcept>
 
-class HiLeiaThread {
+class HiThread {
 public:
-  HiLeiaThread();
+  HiThread();
 
-  ~HiLeiaThread();
+  ~HiThread();
 
   template<class F, class... Args>
   auto Post(F &&f, Args &&... args) -> std::future<typename std::result_of<F(Args...)>::type>;
@@ -28,7 +28,7 @@ private:
   bool stop;
 };
 
-inline HiLeiaThread::HiLeiaThread() : stop(false) {
+inline HiThread::HiThread() : stop(false) {
   thread_ = std::make_unique<std::thread>(std::thread([this] {
     for (;;) {
       std::function<void()> task;
@@ -48,8 +48,17 @@ inline HiLeiaThread::HiLeiaThread() : stop(false) {
   }));
 }
 
+inline HiThread::~HiThread() {
+  {
+    std::unique_lock<std::mutex> lock(queue_mutex_);
+    stop = true;
+  }
+  condition_.notify_all();
+  thread_->join();
+}
+
 template<class F, class... Args>
-inline auto HiLeiaThread::Post(F &&f, Args &&... args) -> std::future<typename std::result_of<F(Args...)>::type> {
+inline auto HiThread::Post(F &&f, Args &&... args) -> std::future<typename std::result_of<F(Args...)>::type> {
   using return_type = typename std::result_of<F(Args...)>::type;
 
   auto task = std::make_shared<std::packaged_task<return_type()> >(
@@ -70,13 +79,4 @@ inline auto HiLeiaThread::Post(F &&f, Args &&... args) -> std::future<typename s
   return res;
 }
 
-inline HiLeiaThread::~HiLeiaThread() {
-  {
-    std::unique_lock<std::mutex> lock(queue_mutex_);
-    stop = true;
-  }
-  condition_.notify_all();
-  thread_->join();
-}
-
-#endif //CODEKATA_CPP_HILEIA_THREAD_H
+#endif //CODEKATA_CPP_HI_THREAD_H
